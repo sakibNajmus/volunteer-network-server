@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require ('cors');
+require('dotenv').config();
 
 const port = 4000
 
@@ -8,11 +9,8 @@ const app = express()
 app.use(cors());
 app.use(bodyParser.json());
 
-const password ="QyIEWtcke4TWii6H";
-
-
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://volunteer:QyIEWtcke4TWii6H@cluster0.rqcp4.mongodb.net/volunteerNetwork?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.rqcp4.mongodb.net/volunteerNetwork?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const registrations = client.db("volunteerNetwork").collection("tasks");
