@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 
 
-const serviceAccount = require("./volunteer-network-fire-auth-firebase-adminsdk-9uc9u-5a80a96a24.json");
+const serviceAccount = require("./Generated_Key/volunteer-network-fire-auth-firebase-adminsdk-9uc9u-5a80a96a24.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
